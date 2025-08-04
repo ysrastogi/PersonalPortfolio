@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand-Drawn Infographic: Multi-Channel AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Patrick Hand', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .sketchy-border {
+            border: 2px solid #363636;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        .flowchart-box {
+            border: 2px solid #4a7878;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+        .flowchart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #4a7878;
+            line-height: 1;
+        }
+        .badge {
+            position: absolute;
+            top: -0.75rem;
+            left: -0.75rem;
+            background-color: #f4a261;
+            color: #363636;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+        }
+        h1, h2, h3 {
+            font-family: 'Patrick Hand', sans-serif;
+        }
+        .handwritten-text {
+            font-family: 'Patrick Hand', sans-serif;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#363636] mb-4">🚀 Anatomy of a Multi-Channel AI Assistant</h1>
+            <h2 class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 handwritten-text">
+                How One Unified AI Layer Powers Smart, Seamless Conversations Across WhatsApp, SMS, Email & Voice
+            </h2>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="architecture" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#4a7878]">System Architecture Flow</h2>
+                <p class="text-center max-w-2xl mx-auto mb-8 text-gray-600 handwritten-text">
+                    This high-level architecture diagram illustrates the flow of a customer interaction. A message from any channel first hits our Router, which acts as a central brain, directing the conversation to the powerful LLM Engine. The engine then interacts with our dual-layer Memory system to recall past context, generating a smart, informed response that is sent back to the user and saved to the CRM.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 relative py-8">
+                    <div class="flowchart-box">
+                        <div class="badge">1</div>
+                        <strong>Channels</strong>
+                        <div class="flex items-center justify-center space-x-2 mt-2">
+                           <span class="text-2xl">💬</span><span class="text-2xl" style="color: green;">🟢</span><span class="text-2xl">📧</span><span class="text-2xl">📞</span>
+                        </div>
+                        <span class="block text-sm text-gray-500 mt-2">Twilio, Meta, SMTP</span>
+                    </div>
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    <div class="flowchart-box">
+                        <div class="badge">2</div>
+                        <strong>Router</strong><span class="block text-sm text-gray-500 mt-2">FastAPI, JWT-based Auth</span>
+                    </div>
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    <div class="flowchart-box">
+                        <div class="badge">3</div>
+                        <strong>LLM Engine</strong><span class="block text-sm text-gray-500 mt-2">OpenAI, Claude, GGUF</span>
+                    </div>
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    <div class="flowchart-box">
+                        <div class="badge">4</div>
+                        <strong>Memory</strong><span class="block text-sm text-gray-500 mt-2">Redis (real-time) & FAISS (semantic)</span>
+                    </div>
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    <div class="flowchart-box">
+                        <div class="badge">5</div>
+                        <strong>CRM</strong><span class="block text-sm text-gray-500 mt-2">HubSpot, Salesforce</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="omni-channel" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="sketchy-border p-6">
+                    <h2 class="text-3xl font-bold mb-4 text-[#4a7878]">What is Omni-Channel Engagement?</h2>
+                    <p class="text-gray-600 mb-4 handwritten-text">
+                        Omni-channel engagement means providing a unified, seamless customer experience across all communication channels. The conversation isn't tied to one platform—it follows the user. For instance, if a customer starts a chat on WhatsApp, they can continue it later via email or a phone call, and our AI assistant will remember the full history and context.
+                    </p>
+                    <p class="text-gray-600 mb-2 handwritten-text">
+                        <strong>Why It Matters:</strong>
+                        Most AI chatbots are siloed to one channel. Our system ensures that the context follows the customer across platforms, increasing CSAT and saving time.
+                    </p>
+                    <p class="text-gray-600 mb-4 handwritten-text">
+                        <strong>Benefits for the End-User:</strong>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>- No need to repeat information.</li>
+                            <li>- Faster, more efficient problem resolution.</li>
+                            <li>- Personalized and contextual service.</li>
+                        </ul>
+                    </p>
+                </div>
+                <div>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="channelsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="usp-capabilities" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#4a7878]">Project USP and Core Capabilities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-gray-600 mb-4 handwritten-text">
+                            Our project's unique selling proposition lies in its ability to deliver true conversational context and memory. This means our AI doesn't just respond; it understands the full history of the customer relationship. The core capabilities are designed to directly translate into benefits for the end-user, such as reduced wait times and a more personalized experience.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            <div class="sketchy-border p-4 text-center border-[#f4a261]">
+                                <h3 class="text-4xl font-bold text-[#f4a261]">98%</h3>
+                                <p class="text-gray-600 text-sm mt-1 handwritten-text">First-Contact Resolution</p>
+                            </div>
+                            <div class="sketchy-border p-4 text-center border-[#4a7878]">
+                                <h3 class="text-4xl font-bold text-[#4a7878]">75%</h3>
+                                <p class="text-gray-600 text-sm mt-1 handwritten-text">Reduction in Repetitive Queries</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container h-96">
+                        <canvas id="capabilitiesChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="client-view" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#4a7878]">What You Get (As a Client)</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-4 bg-[#f0e68c] rounded-lg text-[#363636] text-center shadow-md handwritten-text">
+                        <p class="font-bold">Plug-and-play API for all channels</p>
+                    </div>
+                    <div class="p-4 bg-[#f4a261] rounded-lg text-[#363636] text-center shadow-md handwritten-text">
+                        <p class="font-bold">Real-time CRM sync with HubSpot/Salesforce</p>
+                    </div>
+                    <div class="p-4 bg-[#4a7878] rounded-lg text-white text-center shadow-md handwritten-text">
+                        <p class="font-bold">Hosted LLM backend with memory</p>
+                    </div>
+                    <div class="p-4 bg-[#dcdcdc] rounded-lg text-[#363636] text-center shadow-md handwritten-text">
+                        <p class="font-bold">Deployment guide & dedicated support</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="usecases">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#4a7878]">Usecases & End-User Stories</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">E-commerce Customer Support</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Channel Switch, Context Preserved:</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Day 1: Customer asks about a delayed order via WhatsApp.</li>
+                            <li>Day 2: They call support. The AI auto-links their number to the previous chat and continues the conversation, saving the agent time and improving satisfaction.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">IT Help Desk</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Ticket Consolidation, Seamless Handoff:</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Employee emails the help desk about a software issue.</li>
+                            <li>When the issue persists, they open a new ticket via the portal. The AI immediately links the new ticket to the previous email conversation.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">Financial Services Assistant</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Semantic Recall, Instant Answers:</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>A client calls their bank to check on a loan application.</li>
+                            <li>The AI assistant uses Pinecone to perform a semantic search on all past interactions to find all relevant documents, providing a detailed, accurate status update in seconds.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+        const tooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        function wrapLabel(str, maxLen) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const userPalette = ['#f4a261', '#4a7878', '#f0e68c', '#363636'];
+        const userPaletteBg = ['rgba(244, 162, 97, 0.7)', 'rgba(74, 120, 120, 0.7)', 'rgba(240, 230, 140, 0.7)', 'rgba(54, 54, 54, 0.7)'];
+        
+        const channelsChartCtx = document.getElementById('channelsChart').getContext('2d');
+        new Chart(channelsChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['WhatsApp', 'SMS', 'Email', 'Voice'],
+                datasets: [{
+                    label: 'Channel Distribution',
+                    data: [35, 20, 30, 15],
+                    backgroundColor: userPalette,
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Engagement Distribution by Channel'
+                    }
+                }
+            }
+        });
+
+        const capabilitiesChartCtx = document.getElementById('capabilitiesChart').getContext('2d');
+        new Chart(capabilitiesChartCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Context Persistence', 16), 
+                    wrapLabel('Real-Time Response', 16), 
+                    wrapLabel('Semantic Recall', 16), 
+                    wrapLabel('Omni-Channel Routing', 16)
+                ],
+                datasets: [{
+                    label: 'Capability Score',
+                    data: [100, 95, 98, 100],
+                    backgroundColor: [userPaletteBg[0], userPaletteBg[1], userPaletteBg[2], userPaletteBg[3]],
+                    borderColor: [userPalette[0], userPalette[1], userPalette[2], userPalette[3]],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Core Project Capabilities'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
