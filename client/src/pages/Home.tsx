@@ -7,7 +7,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ResearchSection from "@/components/ResearchSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import CertificationsSection from "@/components/CertificationsSection";
-import AnalyticsSection from "@/components/AnalyticsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -71,7 +70,6 @@ export default function Home() {
       <ResearchSection />
       <ExperienceSection />
       <CertificationsSection />
-      <AnalyticsSection />
       <FAQSection />
       <ContactSection />
       <Footer />
