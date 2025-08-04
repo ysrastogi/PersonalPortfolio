@@ -53,13 +53,16 @@ export default function CertificationsSection() {
                     <i className="fas fa-medal mr-2 text-amber-500"></i>
                     Verified Credential
                   </span>
-                  <motion.button 
+                  <motion.a
+                    href={certification.certification_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary text-sm font-medium flex items-center"
                     whileHover={{ x: 4 }}
                   >
                     View certificate
                     <i className="fas fa-chevron-right ml-1 text-xs"></i>
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
