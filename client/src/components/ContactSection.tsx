@@ -1,63 +1,23 @@
 import { useState } from "react";
+import { useForm as useFormspree, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
 import { SOCIAL_LINKS } from "@/lib/constants";
 
-const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  subject: z.string().min(2, { message: "Subject must be at least 2 characters." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-
 export default function ContactSection() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
+  const [state, handleSubmit] = useFormspree("xvgqwzkk");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-
-  async function onSubmit(data: ContactFormValues) {
-    setIsSubmitting(true);
-    try {
-      // In a real application, this would send data to the server
-      // await apiRequest("POST", "/api/contact", data);
-      
-      // For now, just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly via email.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   return (
     <section id="contact" className="py-12 bg-neutral-50">
@@ -130,77 +90,77 @@ export default function ContactSection() {
             
             <div className="p-8 md:p-10 md:flex-1">
               <h3 className="text-xl font-semibold text-neutral-900 mb-6">Send Me a Message</h3>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="you@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Subject</FormLabel>
-                        <FormControl>
-                          <Input placeholder="What's this about?" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="How can I help you?" 
-                            rows={4} 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button 
-                    type="submit" 
+              {state.succeeded ? (
+                <div className="text-green-600 text-center font-semibold py-8">Thank you for reaching out! I'll get back to you soon.</div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="name">Name</label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                    />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="email">Email</label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                    />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="subject">Subject</label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="What's this about?"
+                      value={form.subject}
+                      onChange={handleChange}
+                      required
+                    />
+                    <ValidationError prefix="Subject" field="subject" errors={state.errors} />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="message">Message</label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="How can I help you?"
+                      rows={4}
+                      value={form.message}
+                      onChange={handleChange}
+                      required
+                    />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} />
+                  </div>
+                  <Button
+                    type="submit"
                     className="w-full bg-primary hover:bg-primary/90"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {state.submitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
-              </Form>
+              )}
               <div className="mt-4 text-center">
                 <p className="text-neutral-600">Or schedule a meeting directly</p>
                 <a 
-                  href="#" 
+                  href="https://cal.com/yash-rastogi-wbrk1g/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center mt-2 px-5 py-2 border border-gray-300 text-base font-medium rounded-md text-neutral-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-150"
                 >
                   <i className="far fa-calendar-alt mr-2"></i> Schedule a Meeting
