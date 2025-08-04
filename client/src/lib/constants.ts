@@ -322,7 +322,7 @@ export const CERTIFICATIONS = [
 ];
 
 // Analytics data
-// export const ANALYTICS = [
+export const ANALYTICS = [
 //   {
 //     number: '247',
 //     label: 'profile views',
@@ -347,7 +347,7 @@ export const CERTIFICATIONS = [
 //     bgColor: 'bg-green-100',
 //     iconColor: 'text-green-600'
 //   }
-// ];
+];
 
 // Navigation links
 export const NAV_LINKS = [
