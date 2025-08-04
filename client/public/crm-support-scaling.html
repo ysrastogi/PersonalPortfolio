@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified AI Layer: CRM, Support & Scheduling Automation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Mermaid.js CDN for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <!-- Patrick Hand font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /* New Color Palette from modularGenAIArchitecture.html */
+        :root {
+            --arylide-yellow: #e9d758;
+            --myrtle-green: #297373;
+            --coral: #ff8552;
+            --platinum: #e6e6e6;
+            --jet: #39393a;
+        }
+
+        body {
+            font-family: 'Patrick Hand', sans-serif;
+            background-color: var(--platinum);
+            color: var(--jet);
+        }
+
+        /* Sketchy border style from the sample file */
+        .sketchy-border {
+            border: 2px solid var(--jet);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sketchy-border:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
+        }
+
+        /* Flowchart box style from the sample file */
+        .flowchart-box {
+            border: 2px solid var(--myrtle-green);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .flowchart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Badge style from the sample file */
+        .badge {
+            position: absolute;
+            top: -0.75rem;
+            left: -0.75rem;
+            background-color: var(--coral);
+            color: var(--jet);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .handwritten-text {
+            font-family: 'Patrick Hand', sans-serif;
+            font-size: 1.25rem;
+        }
+
+        /* Mermaid container for the architectural flow */
+        .mermaid-container {
+            border: 2px solid var(--jet);
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            background-color: white;
+            overflow-x: auto;
+        }
+
+        /* Chart container styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[var(--jet)] mb-4 drop-shadow-md">🔗 Unified AI Layer: CRM, Support & Scheduling Automation</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 handwritten-text">
+                Unified AI layer connected to HubSpot, Intercom, and Calendar—automating lead syncing, support triage, and meeting scheduling. Designed to reduce agent workload and accelerate user engagement.
+            </p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Problem Section -->
+            <section id="problem" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-[var(--myrtle-green)]">
+                    <span class="mr-2 text-2xl">❗</span> Problem
+                </h2>
+                <p class="text-gray-600 mb-4 handwritten-text">
+                    Disjointed tools cause inefficiencies like:
+                </p>
+                <ul class="list-none space-y-2 text-lg handwritten-text">
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Manual data transfers
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Fragmented customer context
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Delayed responses and missed follow-ups
+                    </li>
+                </ul>
+            </section>
+            
+            <!-- Solution Section -->
+            <section id="solution" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-[var(--myrtle-green)]">
+                    <span class="mr-2 text-2xl">✅</span> Solution
+                </h2>
+                <p class="text-gray-600 mb-4 handwritten-text">
+                    Deployed an AI-driven integration layer using FastAPI + LangChain that understands context and acts autonomously to:
+                </p>
+                <ul class="list-none space-y-2 text-lg handwritten-text">
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Sync leads → HubSpot in real time
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Route tickets → Intercom based on intent
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-[var(--coral)] text-2xl mr-3">→</span> Auto-book meetings → Google Calendar via smart chat
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Tech Stack Section -->
+        <section id="tech-stack" class="mt-8 sketchy-border p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-6 text-[var(--myrtle-green)]">⚙️ Tech Stack</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-4 bg-[var(--arylide-yellow)] rounded-lg text-[var(--jet)] text-center shadow-md handwritten-text">
+                    <p class="font-bold">APIs: HubSpot, Intercom, Google Calendar</p>
+                </div>
+                <div class="p-4 bg-[var(--coral)] rounded-lg text-white text-center shadow-md handwritten-text">
+                    <p class="font-bold">AI Agent: LangChain + OpenAI</p>
+                </div>
+                <div class="p-4 bg-[var(--myrtle-green)] rounded-lg text-white text-center shadow-md handwritten-text">
+                    <p class="font-bold">Memory: Redis (session), PostgreSQL (history)</p>
+                </div>
+                <div class="p-4 bg-[var(--arylide-yellow)] rounded-lg text-[var(--jet)] text-center shadow-md handwritten-text">
+                    <p class="font-bold">Infra: FastAPI + Celery + Webhooks</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Impact and Chart Section -->
+        <section id="business-impact" class="mt-8 sketchy-border p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-6 text-[var(--myrtle-green)]">📈 Business Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="sketchy-border p-4 text-center border-[var(--coral)]">
+                        <h3 class="text-4xl font-bold text-[var(--coral)]">🔻 40% ↓</h3>
+                        <p class="text-gray-600 text-sm mt-1 handwritten-text">reduction in agent workload</p>
+                    </div>
+                    <div class="sketchy-border p-4 text-center border-[var(--myrtle-green)]">
+                        <h3 class="text-4xl font-bold text-[var(--myrtle-green)]">⚡ 3× faster</h3>
+                        <p class="text-gray-600 text-sm mt-1 handwritten-text">lead response time</p>
+                    </div>
+                    <div class="sketchy-border p-4 text-center border-[var(--arylide-yellow)]">
+                        <h3 class="text-4xl font-bold text-[var(--arylide-yellow)]">📈 +27%</h3>
+                        <p class="text-gray-600 text-sm mt-1 handwritten-text">increase in conversion rates</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section id="use-cases" class="mt-8 sketchy-border p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">📚 Use Cases</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Use Case 1 -->
+                <div class="p-4 bg-white rounded-lg shadow-md border border-[var(--coral)]">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">Lead Sync</h3>
+                    <p class="text-gray-600 mb-2 handwritten-text">Auto-sync WhatsApp leads to HubSpot with source & score</p>
+                    <div class="mt-4 p-2 rounded bg-[var(--myrtle-green)] text-white text-center handwritten-text font-bold">
+                        <span class="mr-1">🔄</span>Real-time CRM enrichment
+                    </div>
+                </div>
+                <!-- Use Case 2 -->
+                <div class="p-4 bg-white rounded-lg shadow-md border border-[var(--coral)]">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">Support Triage</h3>
+                    <p class="text-gray-600 mb-2 handwritten-text">Route tickets by urgency & intent in Intercom</p>
+                    <div class="mt-4 p-2 rounded bg-[var(--myrtle-green)] text-white text-center handwritten-text font-bold">
+                        <span class="mr-1">🧠</span>Faster issue resolution
+                    </div>
+                </div>
+                <!-- Use Case 3 -->
+                <div class="p-4 bg-white rounded-lg shadow-md border border-[var(--coral)]">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">Smart Booking</h3>
+                    <p class="text-gray-600 mb-2 handwritten-text">Book meetings directly from chat conversations</p>
+                    <div class="mt-4 p-2 rounded bg-[var(--myrtle-green)] text-white text-center handwritten-text font-bold">
+                        <span class="mr-1">🗓️</span>Instant sales follow-up
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architectural Flow Section -->
+        <section id="architecture-flow" class="mt-8 p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">Architectural Flow</h2>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+graph TB
+    %% External Systems
+    subgraph "External Systems"
+        HS[HubSpot CRM<br/>📊 Leads Management]
+        IC[Intercom<br/>💬 Customer Support]
+        GC[Google Calendar<br/>📅 Scheduling]
+    end
+
+    %% Unified AI Layer
+    subgraph "Unified AI Layer"
+        subgraph "FastAPI Service"
+            API[API Gateway<br/>🔌 REST Endpoints]
+            AUTH[Authentication<br/>🔐 JWT/OAuth]
+            RATE[Rate Limiter<br/>⚡ Request Control]
+        end
+        
+        subgraph "LangChain Agent Core"
+            AGENT[AI Agent<br/>🤖 Decision Engine]
+            LLM[LLM Provider<br/>🧠 GPT-4/Claude]
+            MEMORY[Conversation Memory<br/>💾 Context Store]
+        end
+        
+        subgraph "Integration Layer"
+            HSI[HubSpot Integration<br/>📈 Lead Sync]
+            ICI[Intercom Integration<br/>🎧 Support Sync]
+            GCI[Google Calendar Integration<br/>🗓️ Schedule Sync]
+        end
+        
+        subgraph "Data Layer"
+            DB[(Database<br/>PostgreSQL/MongoDB)]
+            CACHE[(Redis Cache<br/>⚡ Fast Access)]
+            QUEUE[Message Queue<br/>📨 RabbitMQ/Celery]
+        end
+    end
+
+    %% Client Applications
+    subgraph "Client Applications"
+        WEB[Web Dashboard<br/>🖥️ Admin Interface]
+        MOBILE[Mobile App<br/>📱 Field Access]
+        CHAT[Chat Widget<br/>💬 Website Integration]
+    end
+
+    %% Webhook & Sync Infrastructure
+    subgraph "Webhook & Sync Layer"
+        WH[Webhook Handler<br/>⚡ Real-time Events]
+        SYNC[Sync Scheduler<br/>⏰ Cron Jobs]
+        PROCESSOR[Event Processor<br/>🔄 Background Tasks]
+    end
+
+    %% Data Flow Connections
+    %% Client to API
+    WEB --> API
+    MOBILE --> API
+    CHAT --> API
+
+    %% API Layer
+    API --> AUTH
+    API --> RATE
+    AUTH --> AGENT
+    RATE --> AGENT
+
+    %% Agent Core
+    AGENT --> LLM
+    AGENT --> MEMORY
+    AGENT --> HSI
+    AGENT --> ICI
+    AGENT --> GCI
+
+    %% Integration to External
+    HSI <--> HS
+    ICI <--> IC
+    GCI <--> GC
+
+    %% Data Layer
+    AGENT --> DB
+    AGENT --> CACHE
+    MEMORY --> CACHE
+    HSI --> DB
+    ICI --> DB
+    GCI --> DB
+
+    %% Webhook & Sync
+    HS -.->|"Webhooks<br/>Lead Updates"| WH
+    IC -.->|"Webhooks<br/>Ticket Updates"| WH
+    GC -.->|"Webhooks<br/>Event Changes"| WH
+    
+    WH --> PROCESSOR
+    PROCESSOR --> QUEUE
+    QUEUE --> AGENT
+
+    SYNC -->|"15min intervals"| HSI
+    SYNC -->|"5min intervals"| ICI
+    SYNC -->|"10min intervals"| GCI
+
+    %% API Endpoints Annotation
+    API -.->|"POST /leads/create<br/>GET /leads/{id}<br/>PUT /leads/update"| HSI
+    API -.->|"POST /tickets/create<br/>GET /tickets/search<br/>PUT /tickets/resolve"| ICI
+    API -.->|"POST /calendar/book<br/>GET /events/today<br/>DELETE /events/{id}"| GCI
+
+    %% Styling
+    classDef external fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef aiLayer fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef client fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef webhook fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef database fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    class HS,IC,GC external
+    class API,AUTH,RATE,AGENT,LLM,MEMORY,HSI,ICI,GCI aiLayer
+    class WEB,MOBILE,CHAT client
+    class WH,SYNC,PROCESSOR webhook
+    class DB,CACHE,QUEUE database
+                </pre>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Function to wrap long labels for Chart.js
+        function wrapLabel(str, maxLen) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Chart.js configuration for the Business Impact bar chart
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mermaid initialization
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'base',
+                themeVariables: {
+                    'primaryColor': '#ffffff',
+                    'primaryTextColor': '#39393a',
+                    'lineColor': '#297373',
+                    'secondaryColor': '#f4a261',
+                    'nodeBorder': '#39393a',
+                    'mainBkg': '#e6e6e6'
+                }
+            });
+
+            // Chart.js initialization
+            const impactChartCtx = document.getElementById('impactChart').getContext('2d');
+            const userPalette = ['#e9d758', '#297373', '#ff8552', '#39393a'];
+            const userPaletteBg = ['rgba(233, 215, 88, 0.7)', 'rgba(41, 115, 115, 0.7)', 'rgba(255, 133, 82, 0.7)', 'rgba(57, 57, 58, 0.7)'];
+
+            new Chart(impactChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel('Agent Workload Reduction', 16),
+                        wrapLabel('Lead Response Speed', 16),
+                        wrapLabel('Conversion Uplift', 16),
+                        wrapLabel('Scheduling Latency', 16)
+                    ],
+                    datasets: [{
+                        label: 'Business Impact Score',
+                        data: [40, 300, 27, 60],
+                        backgroundColor: [userPaletteBg[0], userPaletteBg[1], userPaletteBg[2], userPaletteBg[3]],
+                        borderColor: [userPalette[0], userPalette[1], userPalette[2], userPalette[3]],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 300,
+                            title: {
+                                display: true,
+                                text: 'Value/Impact'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Key Business Impact Metrics'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                        return label.join(' ');
+                                    } else {
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
