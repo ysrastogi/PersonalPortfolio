@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Scoring & Intent Detection Pipeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * Custom CSS to match the "hand-drawn" aesthetic from the sample
+         */
+        body {
+            font-family: 'Patrick Hand', sans-serif;
+            background-color: #f8f9fa;
+            color: #363636;
+        }
+
+        .container {
+            background-color: white;
+        }
+        
+        .sketchy-border {
+            border: 2px solid #363636;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+        }
+        
+        /* New styling to mimic the sample's color palette */
+        .sketchy-border.bg-yellow {
+            background-color: #f0e68c;
+            border-color: #4a7878;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .flowchart-box {
+            border: 2px solid #4a7878;
+            background-color: #e6e6e6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .flowchart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #4a7878;
+            line-height: 1;
+        }
+
+        .badge {
+            position: absolute;
+            top: -0.75rem;
+            left: -0.75rem;
+            background-color: #f4a261;
+            color: #363636;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Patrick Hand', sans-serif;
+        }
+
+        .handwritten-text {
+            font-family: 'Patrick Hand', sans-serif;
+            font-size: 1.25rem;
+        }
+        
+        .intent-box {
+            background-color: #4a7878;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+            min-width: 200px;
+        }
+        
+        .intent-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#363636] mb-4">Lead Scoring & Intent Detection Pipeline</h1>
+            <h2 class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 handwritten-text">
+                Built an NLP-driven lead scoring pipeline integrating intent detection, sentiment analysis, and custom scoring logic. Plugged directly into CRM for real-time sales prioritization.
+            </h2>
+        </header>
+        
+        <!-- Problem Statement Section -->
+        <section id="problem-statement" class="sketchy-border mb-12 bg-[#dcdcdc]">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#4a7878]">Problem Statement</h2>
+            <p class="handwritten-text text-center text-gray-600 max-w-3xl mx-auto">
+                Sales teams were overwhelmed with unqualified leads and lacked real-time insight into buyer intent, causing missed opportunities and inefficient workflows.
+            </p>
+        </section>
+
+        <main class="space-y-16">
+
+            <!-- Section 1: System Architecture Flow -->
+            <section id="architecture" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#4a7878]">System Architecture Flow</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 relative py-8">
+                    
+                    <div class="flowchart-box">
+                        <div class="badge">1</div>
+                        <h3 class="font-bold">Incoming Leads</h3>
+                        <span class="block text-2xl mt-2">💬📧📱</span>
+                        <span class="block text-sm text-gray-500 mt-2">Web Forms, Email, Social Media</span>
+                    </div>
+
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="flowchart-box">
+                            <div class="badge">2</div>
+                            <h3 class="font-bold">NLP Pipeline</h3>
+                            <span class="block text-2xl mt-2">🧠📝</span>
+                            <span class="block text-sm text-gray-500 mt-2">BERT & VADER Models</span>
+                        </div>
+                        <div class="flowchart-arrow transform md:rotate-0">↓</div>
+                        <div class="intent-box">
+                             <h3 class="font-bold text-xl mb-2 text-[#f4a261]">Intent Classes</h3>
+                            <ul class="handwritten-text">
+                                <li>- Purchase Intent</li>
+                                <li>- Demo Request</li>
+                                <li>- Product Inquiry</li>
+                                <li>- Complaint or Frustration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    
+                    <div class="flowchart-box">
+                        <div class="badge">3</div>
+                        <h3 class="font-bold">Lead Scoring Model</h3>
+                        <span class="block text-2xl mt-2">📊📈</span>
+                        <span class="block text-sm text-gray-500 mt-2">XGBoost</span>
+                    </div>
+
+                    <div class="flowchart-arrow transform md:rotate-0">→</div>
+                    
+                    <div class="flowchart-box">
+                        <div class="badge">4</div>
+                        <h3 class="font-bold">CRM Update</h3>
+                        <span class="block text-2xl mt-2">💾🔄</span>
+                        <span class="block text-sm text-gray-500 mt-2">Salesforce, HubSpot</span>
+                        <p class="text-xs mt-2 text-gray-700">Used REST APIs & Webhooks</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Technical Breakdown -->
+            <section id="technical-details" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#4a7878]">Technical Breakdown & Capabilities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">NLP Models Used</h3>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li><strong>BERT:</strong> A state-of-the-art model for classifying user intent (e.g., "Purchase Intent," "Demo Request").</li>
+                            <li><strong>VADER:</strong> A lexicon-based tool for sentiment analysis, determining if the lead's tone is positive, neutral, or negative.</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-[#f4a261]">Scoring Logic (XGBoost)</h3>
+                        <p class="text-gray-600 mb-2 handwritten-text">
+                            An <strong>XGBoost</strong> model combines features from the NLP pipeline with other lead data to produce a final, weighted score.
+                        </p>
+                        
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-[#f4a261]">Feature Engineering</h3>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Sentiment Score (VADER)</li>
+                            <li>Intent Category (BERT Output)</li>
+                            <li>Lead Source (Web, Email, etc.)</li>
+                            <li>Time of Day / Day of Week</li>
+                            <li>Historical Engagement Metrics</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-[#f4a261]">Model Performance Snapshot</h3>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>XGBoost Accuracy: <strong>92%</strong></li>
+                            <li>Precision on Hot Leads: <strong>89%</strong></li>
+                            <li>Intent Classification F1: <strong>90%</strong></li>
+                        </ul>
+                        
+                    </div>
+                    
+                    <!-- Chart section for Lead Score Categories -->
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="leadScoreChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Use Cases and Benefits -->
+            <section id="usecases" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#4a7878]">Real-World Application & Benefits</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">Automated Prioritization</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">
+                            Automatically flags "hot" leads for immediate follow-up by the sales team.
+                        </p>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">Sentiment-Based Routing</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">
+                            Routes leads with negative sentiment to customer retention or support teams to address issues proactively.
+                        </p>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#f4a261]">Optimized Workflows</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">
+                            Reduces manual effort for sales teams by automatically categorizing and enriching lead profiles.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Business Impact Summary Section -->
+            <section id="business-impact" class="sketchy-border p-6 md:p-8 bg-yellow">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#4a7878]">Business Impact Summary</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center handwritten-text font-bold">
+                    <p class="p-4 bg-white rounded-lg shadow-md">+33% Increase in Hot Lead Conversions</p>
+                    <p class="p-4 bg-white rounded-lg shadow-md">20 Hours Saved Weekly in Manual Lead Vetting</p>
+                    <p class="p-4 bg-white rounded-lg shadow-md">Proactive Handling of 70% Negative Sentiment Leads</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+        // Custom color palette matching the sample
+        const userPalette = ['#f4a261', '#4a7878', '#f0e68c', '#363636'];
+        const userPaletteBg = ['rgba(244, 162, 97, 0.7)', 'rgba(74, 120, 120, 0.7)', 'rgba(240, 230, 140, 0.7)', 'rgba(54, 54, 54, 0.7)'];
+
+        // Define a function to wrap labels for the chart, as seen in the sample
+        function wrapLabel(str, maxLen) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Configuration for the Lead Score chart
+        const leadScoreChartCtx = document.getElementById('leadScoreChart').getContext('2d');
+        new Chart(leadScoreChartCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Hot (80-100)', 16),
+                    wrapLabel('Warm (60-79)', 16),
+                    wrapLabel('Cold (40-59)', 16),
+                    wrapLabel('Unqualified (0-39)', 16)
+                ],
+                datasets: [{
+                    label: 'Lead Score Category',
+                    data: [90, 70, 50, 20], // Example data points
+                    backgroundColor: [userPaletteBg[0], userPaletteBg[1], userPaletteBg[2], userPaletteBg[3]],
+                    borderColor: [userPalette[0], userPalette[1], userPalette[2], userPalette[3]],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // This makes it a horizontal bar chart
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Lead Score Categories',
+                        font: {
+                            family: 'Patrick Hand',
+                            size: 18
+                        },
+                        color: '#4a7878'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
