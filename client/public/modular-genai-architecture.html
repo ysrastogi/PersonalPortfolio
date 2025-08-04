@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular GenAI Architecture Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS to replace the original with the user's palette */
+        :root {
+            --arylide-yellow: #e9d758;
+            --myrtle-green: #297373;
+            --coral: #ff8552;
+            --platinum: #e6e6e6;
+            --jet: #39393a;
+        }
+        body {
+            font-family: 'Patrick Hand', sans-serif;
+            background-color: var(--platinum);
+            color: var(--jet);
+        }
+        .sketchy-border {
+            border: 2px solid var(--jet);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        .flowchart-box {
+            border: 2px solid var(--myrtle-green);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+        .flowchart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        .badge {
+            position: absolute;
+            top: -0.75rem;
+            left: -0.75rem;
+            background-color: var(--coral);
+            color: var(--jet);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+        }
+        h1, h2, h3 {
+            font-family: 'Patrick Hand', sans-serif;
+        }
+        .handwritten-text {
+            font-family: 'Patrick Hand', sans-serif;
+            font-size: 1.25rem;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+        }
+        .mermaid-container {
+            border: 2px solid var(--jet);
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            background-color: white;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[var(--jet)] mb-4">🧩 Modular GenAI Architecture: Built for Scale, Ready for Speed</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 handwritten-text">
+                AI stacks are either:
+                <br>❌ Too heavy for SMBs (costly, complex)
+                <br>❌ Too weak for enterprises (no scale, no control)
+                <br>✅ Solution: Dual-mode architecture with plug-and-play modules.
+            </p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="architecture-modules" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">Dual-Mode Architecture</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-[var(--coral)] rounded-lg text-white shadow-md handwritten-text flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-2">🧱 Enterprise Stack</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Kubernetes · MLflow · Redis · CI/CD</li>
+                            <li>Multi-tenant + RBAC</li>
+                            <li>Scales to 1M+ requests/month</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-[var(--arylide-yellow)] rounded-lg text-[var(--jet)] shadow-md handwritten-text flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-2">⚙️ SMB Stack</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Dockerized FastAPI agent</li>
+                            <li>SQLite + Local cache</li>
+                            <li>10-min deploy, $20/mo infra cost</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-[var(--myrtle-green)] rounded-lg text-white shadow-md handwritten-text flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-2">🔌 Shared Modules</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Channel Adapter (Email, WhatsApp, Voice)</li>
+                            <li>Memory Store (Redis / Pinecone / SQLite)</li>
+                            <li>Analytics Layer (Prometheus or local logs)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results" class="sketchy-border p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">📊 Comparative Results</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-[var(--jet)] handwritten-text sketchy-border">
+                            <thead class="bg-[var(--platinum)]">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Metric</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Enterprise</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">SMB</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-[var(--platinum)]">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">🚀 Deploy Time</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">1–2 days</td>
+                                    <td class="px-6 py-4 whitespace-nowrap"> &lt; 10 minutes</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">💸 Infra Cost</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">$300–600/mo</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">$15–30/mo</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">🧠 Memory Type</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">Redis + PG</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">SQLite / JSON</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">🔁 Scaling Model</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">Auto-scaling</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">Static Docker</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+                <p class="text-center mt-8 max-w-2xl mx-auto handwritten-text">
+                    <strong>📝 Caption:</strong> Modular GenAI system that scales like an enterprise platform, but installs like a weekend project. Fast, flexible, and future-ready.
+                </p>
+            </section>
+
+            <section id="architecture-flow" class="p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">Architectural Flow</h2>
+                <div class="mermaid-container">
+                    <pre class="mermaid">
+graph TB
+    subgraph "User Interfaces"
+        WA[WhatsApp]
+        EM[Email]
+        VC[Voice]
+        WEB[Web App]
+        API[REST API]
+    end
+
+    subgraph "Channel Adapter Layer"
+        CA[Channel Adapter&lt;br/&gt;- Message Routing&lt;br/&gt;- Protocol Translation&lt;br/&gt;- Rate Limiting]
+    end
+
+    subgraph "Core GenAI Engine"
+        subgraph "Authentication & Authorization"
+            AUTH[Auth Service&lt;br/&gt;- RBAC&lt;br/&gt;- Multi-tenant Support&lt;br/&gt;- Session Management]
+        end
+        
+        subgraph "AI Processing Core"
+            LLM[LLM Service&lt;br/&gt;- Model Selection&lt;br/&gt;- Prompt Engineering&lt;br/&gt;- Response Generation]
+            AGENT[Agent Orchestrator&lt;br/&gt;- Task Planning&lt;br/&gt;- Tool Selection&lt;br/&gt;- Workflow Management]
+        end
+
+        subgraph "Memory Management"
+            MEMIF[Memory Interface]
+        end
+    end
+
+    subgraph "Pluggable Memory Stores"
+        REDIS[(Redis&lt;br/&gt;Enterprise)]
+        POSTGRES[(PostgreSQL&lt;br/&gt;Enterprise)]
+        PINECONE[(Pinecone&lt;br/&gt;Vector DB)]
+        SQLITE[(SQLite&lt;br/&gt;SMB)]
+        LOCALFS[Local File Cache&lt;br/&gt;SMB]
+    end
+
+    subgraph "Model Management"
+        MLFLOW[MLflow Registry&lt;br/&gt;Enterprise]
+        LOCALMODEL[Local Models&lt;br/&gt;SMB]
+    end
+
+    subgraph "Analytics & Monitoring"
+        PROM[Prometheus&lt;br/&gt;Enterprise]
+        GRAFANA[Grafana&lt;br/&gt;Enterprise]
+        JSONLOG[JSON Logs&lt;br/&gt;SMB]
+    end
+
+    subgraph "External Integrations"
+        CRM[CRM Systems&lt;br/&gt;Optional for SMB]
+        EMAIL[Email Services&lt;br/&gt;Optional for SMB]
+    end
+
+    subgraph "Deployment Infrastructure"
+        subgraph "Enterprise Stack"
+            K8S[Kubernetes Cluster&lt;br/&gt;- Auto-scaling&lt;br/&gt;- Load Balancing&lt;br/&gt;- Service Mesh]
+            CICD[CI/CD Pipeline&lt;br/&gt;- GitOps&lt;br/&gt;- Automated Testing&lt;br/&gt;- Blue-Green Deploy]
+            LB[Load Balancer&lt;br/&gt;Multi-tenant routing]
+        end
+
+        subgraph "SMB Stack"
+            DOCKER[Docker Container&lt;br/&gt;- FastAPI Service&lt;br/&gt;- Single Instance&lt;br/&gt;- Config-based Setup]
+        end
+    end
+
+    %% User Interface Connections
+    WA --> CA
+    EM --> CA
+    VC --> CA
+    WEB --> CA
+    API --> CA
+
+    %% Channel Adapter to Auth
+    CA --> AUTH
+
+    %% Auth to Core Processing
+    AUTH --> LLM
+    AUTH --> AGENT
+
+    %% Core Processing
+    LLM --> AGENT
+    AGENT --> MEMIF
+
+    %% Memory Interface to Stores
+    MEMIF -.->|Enterprise| REDIS
+    MEMIF -.->|Enterprise| POSTGRES
+    MEMIF -.->|Vector Search| PINECONE
+    MEMIF -.->|SMB| SQLITE
+    MEMIF -.->|SMB| LOCALFS
+
+    %% Model Management
+    LLM -.->|Enterprise| MLFLOW
+    LLM -.->|SMB| LOCALMODEL
+
+    %% Analytics
+    AGENT --> PROM
+    AGENT --> JSONLOG
+    PROM --> GRAFANA
+
+    %% External Integrations
+    AGENT -.->|Optional| CRM
+    AGENT -.->|Optional| EMAIL
+
+    %% Deployment
+    AUTH -.->|Enterprise| K8S
+    LLM -.->|Enterprise| K8S
+    AGENT -.->|Enterprise| K8S
+    K8S --> LB
+    CICD --> K8S
+
+    AUTH -.->|SMB| DOCKER
+    LLM -.->|SMB| DOCKER
+    AGENT -.->|SMB| DOCKER
+
+    %% Styling
+    classDef enterprise fill:#ff8552,stroke:#39393a,stroke-width:2px
+    classDef smb fill:#e9d758,stroke:#39393a,stroke-width:2px
+    classDef core fill:#297373,stroke:#39393a,stroke-width:2px
+    classDef storage fill:#e6e6e6,stroke:#39393a,stroke-width:2px
+    classDef interface fill:#e6e6e6,stroke:#39393a,stroke-width:2px
+
+    class K8S,CICD,LB,REDIS,POSTGRES,MLFLOW,PROM,GRAFANA enterprise
+    class DOCKER,SQLITE,LOCALFS,LOCALMODEL,JSONLOG smb
+    class AUTH,LLM,AGENT,MEMIF,CA core
+    class REDIS,POSTGRES,PINECONE,SQLITE,LOCALFS storage
+    class WA,EM,VC,WEB,API interface
+                    </pre>
+                </div>
+            </section>
+
+            <section id="usecases" class="p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[var(--myrtle-green)]">💡 Use Cases & End-User Stories</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">1. SMB: E-commerce Automation</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Use Case: AI-powered customer support on WhatsApp + Email</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Story: A small D2C brand deploys the SMB stack in 10 minutes. The AI assistant handles 80% of repetitive order inquiries via WhatsApp, reducing support tickets by 60% in the first month. No engineering team needed.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">2. Enterprise: Financial Services ChatOps</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Use Case: Multi-agent AI handling loan queries across voice, email, and CRM</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Story: A fintech firm uses the enterprise stack to launch an AI assistant that syncs with Salesforce. The assistant routes customer voice calls based on intent and recalls previous chats for full context. Response time drops by 50%, and customer satisfaction jumps.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">3. SMB: Appointment-Based Businesses</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Use Case: Calendar-based AI scheduling over WhatsApp</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Story: A clinic integrates the AI stack with Google Calendar. Patients book/reschedule appointments through WhatsApp without human intervention. Staff hours saved: 25+/month.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">4. Enterprise: IT Helpdesk Automation</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Use Case: Tier-1 ticket triage across Slack, Email, and Portal</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Story: A large IT firm deploys the enterprise version to auto-classify incoming support tickets and recommend responses. AI resolves 35% of tickets without human intervention.</li>
+                        </ul>
+                    </div>
+                    <div class="sketchy-border p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[var(--coral)]">5. SMB: Event Lead Capture</h3>
+                        <p class="text-gray-600 mb-2 font-bold handwritten-text">Use Case: QR-to-CRM capture with automated follow-ups</p>
+                        <ul class="text-gray-600 list-disc list-inside space-y-1 handwritten-text">
+                            <li>Story: At an expo, a startup uses QR codes linked to a lightweight AI assistant. Leads are auto-enriched and synced to HubSpot with personalized follow-up emails triggered instantly.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mermaid initialization
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'neutral'
+            });
+
+            // Chart.js initialization
+            const userPalette = ['#e9d758', '#ff8552'];
+            const userPaletteBg = ['rgba(233, 215, 88, 0.7)', 'rgba(255, 133, 82, 0.7)'];
+
+            const comparisonChartCtx = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(comparisonChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Deploy Time (hours)', 'Infra Cost ($/mo)'],
+                    datasets: [
+                        {
+                            label: 'Enterprise',
+                            data: [48, 450], // 1-2 days -> 24-48 hours, $300-600 -> $450 average
+                            backgroundColor: userPaletteBg[1],
+                            borderColor: userPalette[1],
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'SMB',
+                            data: [0.16, 22.5], // < 10 mins -> 0.16 hours, $15-30 -> $22.5 average
+                            backgroundColor: userPaletteBg[0],
+                            borderColor: userPalette[0],
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    family: 'Patrick Hand',
+                                    size: 14
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Enterprise vs. SMB Stack Comparison',
+                            font: {
+                                family: 'Patrick Hand',
+                                size: 18
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
