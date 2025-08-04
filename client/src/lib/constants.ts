@@ -64,42 +64,130 @@ export const SERVICES = [
 
 // Projects showcase
 export const PROJECTS = [
-  {
-    title: 'Business Intelligence Dashboard Suite',
-    description: 'Developed automated data analytics dashboards that transform raw business data into clear insights, enabling smarter decision-making across departments. The solution includes predictive modeling to forecast business trends.',
-    features: [
-      'Automated data collection and processing',
-      'Interactive visualization dashboards',
-      'Predictive analytics with ML models',
-      'Real-time performance monitoring'
+    {
+    "title": "Zenith AI Assistant",
+    "description": "A smart conversational AI that answers questions by reading and understanding content from PDFs and web documents, providing accurate, context-aware responses from complex sources in real time.",
+    "features": [
+      "Interactive chat interface with multi-model support",
+      "Document processing and information extraction",
+      "Web page content analysis", 
+      "Conversation history and context awareness",
+      "Multilingual interface support"
     ],
-    technologies: [
-      { name: 'Python', bgColor: 'bg-blue-100', textColor: 'text-blue-800' },
-      { name: 'Pandas/NumPy', bgColor: 'bg-teal-100', textColor: 'text-teal-800' },
-      { name: 'TensorFlow', bgColor: 'bg-orange-100', textColor: 'text-orange-800' },
-      { name: 'SQL', bgColor: 'bg-indigo-100', textColor: 'text-indigo-800' }
+    "technologies": [
+      {"name": "Python", "bgColor": "bg-blue-100", "textColor": "text-blue-800"},
+      { "name": "Chainlit", "bgColor": "bg-grey-100", "textColor": "text-blue-800" },
+      {"name": "Vector DB", "bgColor": "bg-yellow-100", "textColor": "text-yellow-800"},
+      { "name": "LangChain", "bgColor": "bg-green-100", "textColor": "text-green-800" },
+      { "name": "PyTorch", "bgColor": "bg-orange-100", "textColor": "text-orange-800" },
+      { "name": "OpenAI/Anthropic", "bgColor": "bg-purple-100", "textColor": "text-purple-800" }
     ],
-    icon: 'chart-line',
-    gradient: 'from-teal-500 to-blue-500',
-    projectTitle: 'Data Analytics'
+    "icon": "robot",
+    "gradient": "from-blue-500 to-purple-500",
+    "projectTitle": "Zenith AI",
+    "url": "https://huggingface.co/spaces/hello-yaaash25/zenith"
   },
   {
-    title: 'AI Security and Governance Framework',
-    description: 'Developed comprehensive security measures and governance frameworks for enterprise AI systems, ensuring compliance with regulations while protecting sensitive data.',
-    features: [
-      'Rigorous testing of AI models',
-      'Continuous monitoring systems',
-      'Data protection protocols'
-    ],
-    technologies: [
-      { name: 'Security Frameworks', bgColor: 'bg-purple-100', textColor: 'text-purple-800' },
-      { name: 'Governance Tools', bgColor: 'bg-blue-100', textColor: 'text-blue-800' },
-      { name: 'Compliance Systems', bgColor: 'bg-green-100', textColor: 'text-green-800' }
-    ],
-    icon: 'shield-alt',
-    gradient: 'from-primary to-indigo-700',
-    projectTitle: 'AI Security'
+  "title": "Modular GenAI Flow",
+  "description": "A plug-and-play dual-mode GenAI system designed for both SMBs and enterprises, offering lightning-fast deployment, scalable AI orchestration, and modular adaptability across channels like WhatsApp, Email, and Voice.",
+  "features": [
+    "Dual-mode architecture (SMB and Enterprise stacks)",
+    "Agent orchestrator with model selection and prompt engineering",
+    "Modular channel adapter for WhatsApp, Email, Voice, and more",
+    "Memory management with Redis, Pinecone, SQLite support",
+    "End-to-end analytics via Prometheus, Grafana, and JSON logs"
+  ],
+  "technologies": [
+    { "name": "FastAPI", "bgColor": "bg-blue-100", "textColor": "text-blue-800" },
+    { "name": "Docker", "bgColor": "bg-yellow-100", "textColor": "text-yellow-800" },
+    { "name": "Kubernetes", "bgColor": "bg-green-100", "textColor": "text-green-800" },
+    { "name": "MLflow", "bgColor": "bg-orange-100", "textColor": "text-orange-800" },
+    { "name": "Redis", "bgColor": "bg-red-100", "textColor": "text-red-800" },
+    { "name": "Pinecone", "bgColor": "bg-purple-100", "textColor": "text-purple-800" },
+    { "name": "SQLite", "bgColor": "bg-gray-100", "textColor": "text-gray-800" },
+    { "name": "Prometheus", "bgColor": "bg-pink-100", "textColor": "text-pink-800" },
+    { "name": "Grafana", "bgColor": "bg-indigo-100", "textColor": "text-indigo-800" }
+  ],
+  "icon": "puzzle",
+  "gradient": "from-green-500 to-yellow-500",
+  "projectTitle": "Modular GenAI Flow",
+  "url": "/modular-genai-architecture.html"
   },
+  {
+  "title": "Lead Scoring & Intent Detection",
+  "description": "An NLP-powered pipeline integrating intent classification, sentiment analysis, and lead scoring to help sales teams prioritize leads in real-time and improve conversion rates through automated CRM integration.",
+  "features": [
+    "Intent detection using BERT (e.g., Purchase, Demo Request)",
+    "Sentiment analysis with VADER for tone-based routing",
+    "XGBoost-based scoring model for lead prioritization",
+    "REST API & Webhook integration with CRMs like Salesforce & HubSpot",
+    "Real-time lead enrichment and workflow automation"
+  ],
+  "technologies": [
+    { "name": "Python", "bgColor": "bg-blue-100", "textColor": "text-blue-800" },
+    { "name": "BERT", "bgColor": "bg-purple-100", "textColor": "text-purple-800" },
+    { "name": "VADER", "bgColor": "bg-yellow-100", "textColor": "text-yellow-800" },
+    { "name": "XGBoost", "bgColor": "bg-green-100", "textColor": "text-green-800" },
+    { "name": "FastAPI", "bgColor": "bg-teal-100", "textColor": "text-teal-800" },
+    { "name": "Salesforce", "bgColor": "bg-indigo-100", "textColor": "text-indigo-800" },
+    { "name": "HubSpot", "bgColor": "bg-orange-100", "textColor": "text-orange-800" }
+  ],
+  "icon": "activity",
+  "gradient": "from-pink-500 to-yellow-500",
+  "projectTitle": "Lead Scoring AI",
+  "url": "/lead-scoring-and-intent-detection.html"
+  },
+  {
+  "title": "Unified AI Layer for CRM & Support",
+  "description": "An AI-driven integration layer that automates lead syncing, support triage, and smart meeting scheduling via FastAPI + LangChain, enhancing agent productivity and accelerating customer response times across HubSpot, Intercom, and Google Calendar.",
+  "features": [
+    "Real-time lead sync to HubSpot via WhatsApp or Web",
+    "Intent-based support ticket routing in Intercom",
+    "Automated meeting booking via Google Calendar",
+    "LangChain-powered agent with LLM-based decision-making",
+    "Context-aware chat integration across mobile, web, and CRM tools"
+  ],
+  "technologies": [
+    { "name": "FastAPI", "bgColor": "bg-blue-100", "textColor": "text-blue-800" },
+    { "name": "LangChain", "bgColor": "bg-green-100", "textColor": "text-green-800" },
+    { "name": "Redis", "bgColor": "bg-red-100", "textColor": "text-red-800" },
+    { "name": "PostgreSQL", "bgColor": "bg-yellow-100", "textColor": "text-yellow-800" },
+    { "name": "RabbitMQ", "bgColor": "bg-purple-100", "textColor": "text-purple-800" },
+    { "name": "HubSpot", "bgColor": "bg-orange-100", "textColor": "text-orange-800" },
+    { "name": "Intercom", "bgColor": "bg-pink-100", "textColor": "text-pink-800" },
+    { "name": "Google Calendar", "bgColor": "bg-indigo-100", "textColor": "text-indigo-800" }
+  ],
+  "icon": "calendar-check",
+  "gradient": "from-indigo-500 to-orange-500",
+  "projectTitle": "CRM Support AI Layer",
+  "url": "/crm-support-scaling.html"
+  },
+  {
+  "title": "Multi-Channel AI Assistant",
+  "description": "A unified AI system that delivers seamless, memory-driven conversations across WhatsApp, Email, Voice, and SMS. Designed for true omni-channel engagement with real-time CRM sync and context-aware LLM responses.",
+  "features": [
+    "Omni-channel support (WhatsApp, SMS, Email, Voice)",
+    "Router for unified message handling across platforms",
+    "LLM engine with dual-layer memory (Redis + FAISS)",
+    "Semantic search for customer history and support documents",
+    "Real-time CRM sync with Salesforce and HubSpot"
+  ],
+  "technologies": [
+    { "name": "FastAPI", "bgColor": "bg-blue-100", "textColor": "text-blue-800" },
+    { "name": "OpenAI / Claude / GGUF", "bgColor": "bg-purple-100", "textColor": "text-purple-800" },
+    { "name": "Redis", "bgColor": "bg-red-100", "textColor": "text-red-800" },
+    { "name": "FAISS", "bgColor": "bg-yellow-100", "textColor": "text-yellow-800" },
+    { "name": "Twilio", "bgColor": "bg-pink-100", "textColor": "text-pink-800" },
+    { "name": "Meta", "bgColor": "bg-green-100", "textColor": "text-green-800" },
+    { "name": "HubSpot", "bgColor": "bg-orange-100", "textColor": "text-orange-800" },
+    { "name": "Salesforce", "bgColor": "bg-indigo-100", "textColor": "text-indigo-800" }
+  ],
+  "icon": "message-circle",
+  "gradient": "from-purple-500 to-pink-500",
+  "projectTitle": "Multi-Channel AI",
+  "url": "/multi-channel-ai-assistant.html"
+  },
+
   {
     title: 'Soil Health Monitoring System',
     description: 'Designed and developed an optochemical sensor-based machine learning solution to monitor soil health. This product determines the macro nutrient content (N, P, K) of the soil for more efficient agricultural practices.',
@@ -157,9 +245,9 @@ export const WORK_EXPERIENCE = [
     logo: 'https://images.unsplash.com/photo-1592772874383-d08932d29db7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
   },
   {
-    title: 'Placement Coordinator',
-    company: 'Centre of Training & Placement, NIT Jalandhar',
-    period: 'Apr 2023 - May 2024 · 1 yr 2 mos',
+    title: 'CyberPhysical System Developer',
+    company: '@Awadh-IITiHub - AWaDH @ IIT Ropar',
+    period: 'Mar 2023 - Dec 2023 · 10 months',
     location: '',
     type: 'Part-time',
     skills: [],
@@ -182,20 +270,22 @@ export const EDUCATION = [
 // Certifications data
 export const CERTIFICATIONS = [
   {
-    title: 'Deep Learning with Keras and TensorFlow',
+    title: 'Advanced Deep Learning Specialist',
     issuer: 'IBM',
     date: 'Issued Apr 2025',
     logo: 'ibm',
     bgColor: 'bg-blue-100',
-    logoColor: 'text-blue-700'
+    logoColor: 'text-blue-700',
+    certification_url: 'https://www.credly.com/badges/e8a8cbeb-3399-495d-9ddc-e86e6bb1019a/public_url'
   },
   {
-    title: 'Introduction to Deep Learning & Neural Networks with Keras',
+    title: 'Generative AI and LLMs: Architecture and Data Preparation',
     issuer: 'IBM',
     date: 'Issued Mar 2025',
     logo: 'ibm',
     bgColor: 'bg-blue-100',
-    logoColor: 'text-blue-700'
+    logoColor: 'text-blue-700',
+    certification_url: 'https://www.credly.com/badges/fa5df8bf-fade-48b1-b9ce-c693e77a4390/public_url'
   },
   {
     title: 'AI Security and Governance',
@@ -232,32 +322,32 @@ export const CERTIFICATIONS = [
 ];
 
 // Analytics data
-export const ANALYTICS = [
-  {
-    number: '247',
-    label: 'profile views',
-    description: 'Discover who\'s viewed your profile.',
-    icon: 'users',
-    bgColor: 'bg-primary/10',
-    iconColor: 'text-primary'
-  },
-  {
-    number: '72',
-    label: 'post impressions',
-    description: 'Check out who\'s engaging with your posts. Past 7 days',
-    icon: 'chart-bar',
-    bgColor: 'bg-blue-100',
-    iconColor: 'text-blue-600'
-  },
-  {
-    number: '49',
-    label: 'search appearances',
-    description: 'See how often you appear in search results.',
-    icon: 'search',
-    bgColor: 'bg-green-100',
-    iconColor: 'text-green-600'
-  }
-];
+// export const ANALYTICS = [
+//   {
+//     number: '247',
+//     label: 'profile views',
+//     description: 'Discover who\'s viewed your profile.',
+//     icon: 'users',
+//     bgColor: 'bg-primary/10',
+//     iconColor: 'text-primary'
+//   },
+//   {
+//     number: '72',
+//     label: 'post impressions',
+//     description: 'Check out who\'s engaging with your posts. Past 7 days',
+//     icon: 'chart-bar',
+//     bgColor: 'bg-blue-100',
+//     iconColor: 'text-blue-600'
+//   },
+//   {
+//     number: '49',
+//     label: 'search appearances',
+//     description: 'See how often you appear in search results.',
+//     icon: 'search',
+//     bgColor: 'bg-green-100',
+//     iconColor: 'text-green-600'
+//   }
+// ];
 
 // Navigation links
 export const NAV_LINKS = [
